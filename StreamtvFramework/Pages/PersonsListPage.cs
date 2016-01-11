@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using OpenQA.Selenium;
 
 namespace StreamtvFramework
@@ -32,7 +33,7 @@ namespace StreamtvFramework
                 var fio =
                     Driver.Instance.FindElement(
                         By.XPath("/html/body/div/div/div/div/div/div/div/div/div/div[3]/div[2]/table"));
-                return fio.Text == "Sidenko Alexander Olegoeich";
+                return fio.Text == "Siiidenko Alexander Olegoeich";
             }
         }
 
@@ -53,7 +54,18 @@ namespace StreamtvFramework
                 var fio =
                     Driver.Instance.FindElement(
                         By.XPath("/html/body/div/div/div/div/div/div/div/div/div/div[3]/div[2]/table/tbody/tr/td[2]"));
-                return fio.Text == "Sidenko Alexander Olegoeich";
+                return fio.Text == "Siiidenko Alexander Olegoeich";
+            }
+        }
+
+        public static bool IsAtOnEmptyTable
+        {
+            get
+            {
+                var emptyTable =
+                    Driver.Instance.FindElement(
+                        By.XPath("/html/body/div/div/div/div/div/div/div/div/div/div[3]/div[2]/table"));
+                return emptyTable.Text == String.Empty;
             }
         }
 
@@ -61,8 +73,6 @@ namespace StreamtvFramework
         {
             Driver.Instance.FindElement(
                 By.XPath("/html/body/div/div/div/div/div/ul/li[1]/a/tab-heading/div")).Click();
-
-
         }
     }
 

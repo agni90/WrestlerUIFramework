@@ -14,10 +14,10 @@ namespace StreamtvTest
             LoginPage.LoginAs("auto").WithPassword("test").Login();
         }
 
-        //[TestCleanup]
-       // public void CleanUp()
-       // {
-          //  Driver.CleanUp();
-        //}
+        [TestCleanup]
+        public void CleanUp()
+        {
+            Driver.CleanUp();
+        }
     }
 }

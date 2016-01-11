@@ -10,7 +10,7 @@ namespace StreamtvTest
         [TestMethod]
         public void Can_Delete_Account()
         {
-            PersonsListPage.SearchPerson("Sidenko Alexander").Search();
+            PersonsListPage.SearchPerson("Siiidenko Alexander").Search();
             PersonsListPage.ChoosePerson();
             OnlyCreatedProfilePage.Delete();
             PersonsListPage.SecondSearch();
