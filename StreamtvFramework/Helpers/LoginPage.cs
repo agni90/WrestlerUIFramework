@@ -9,7 +9,7 @@ namespace StreamtvFramework
             Driver.Instance.Navigate().GoToUrl("http://streamtv.net.ua/base");
         }
 
-        public static LoginCommand LoginAs(string username)
+        public static LoginCommand EnterLogin(string username)
         {
             return new LoginCommand(username);
         }

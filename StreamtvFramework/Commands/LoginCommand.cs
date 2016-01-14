@@ -12,7 +12,7 @@ namespace StreamtvFramework.Commands
             _username = username;
         }
 
-        public LoginCommand WithPassword(string password)
+        public LoginCommand EnterPassword(string password)
         {
             _password = password;
             return this;
@@ -20,13 +20,13 @@ namespace StreamtvFramework.Commands
 
         public void Login()
         {
-            var loginInput = Driver.Instance.FindElement(By.XPath("/html/body/div/div/div/div/div/div[2]/form/div[1]/fg-input/div/input"));
+            var loginInput = Driver.Instance.FindElement(By.XPath("//input[@placeholder='Login']"));
             loginInput.SendKeys(_username);
 
-            var passInput = Driver.Instance.FindElement(By.XPath("/html/body/div/div/div/div/div/div[2]/form/div[2]/fg-input/div/input"));
+            var passInput = Driver.Instance.FindElement(By.XPath("//input[@placeholder='Password']"));
             passInput.SendKeys(_password);
 
-            var enterButton = Driver.Instance.FindElement(By.XPath("/html/body/div/div/div/div/div/div[2]/form/button"));
+            var enterButton = Driver.Instance.FindElement(By.XPath("//button[@type='submit']"));
             enterButton.Click();
         }
     }

@@ -13,7 +13,7 @@ namespace StreamtvFramework
                 .Click();
         }
 
-        public static CreateCommand CreateWithLastName(string lname)
+        public static CreateCommand EnterLastName(string lname)
         {
             return new CreateCommand(lname);
         }
@@ -47,49 +47,49 @@ namespace StreamtvFramework
             _lname = lname;
         }
 
-        public CreateCommand WithFirstName(string fname)
+        public CreateCommand EnterFirstName(string fname)
         {
             _fname = fname;
             return this;
         }
 
-        public CreateCommand WithDOB(string dob)
+        public CreateCommand EnterDOB(string dob)
         {
             _dob = dob;
             return this;
         }
 
-        public CreateCommand WithMiddleName(string mname)
+        public CreateCommand EnterMiddleName(string mname)
         {
             _mname = mname;
             return this;
         }
 
-        public CreateCommand WithRegion(string region)
+        public CreateCommand ChooseRegion(string region)
         {
             _region = region;
             return this;
         }
 
-        public CreateCommand WithFST(string fst)
+        public CreateCommand ChooseFST(string fst)
         {
             _fst = fst;
             return this;
         }
 
-        public CreateCommand WithStyle(string style)
+        public CreateCommand ChooseStyle(string style)
         {
             _style = style;
             return this;
         }
 
-        public CreateCommand WithAge(string age)
+        public CreateCommand ChooseAge(string age)
         {
             _age = age;
             return this;
         }
 
-        public CreateCommand WithYear(string year)
+        public CreateCommand ChooseYear(string year)
         {
             _year = year;
             return this;            
@@ -100,63 +100,56 @@ namespace StreamtvFramework
         {
             var lname =
                 Driver.Instance.FindElement(
-                    By.XPath(
-                        "/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[1]/fg-input[1]/div/input"));
+                    By.XPath("//input[@placeholder='Last name']"));
             lname.SendKeys(_lname);
 
             var fname = 
                 Driver.Instance.FindElement(
-                    By.XPath(
-                        "/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[1]/fg-input[2]/div/input"));
+                    By.XPath("//input[@placeholder='First name']"));
             fname.SendKeys(_fname);
 
             var dob =
                 Driver.Instance.FindElement(
-                    By.XPath(
-                        "/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[2]/fg-date/div/input"));
+                    By.XPath("//input[@placeholder='Date of Birth']"));
             dob.SendKeys(_dob);
 
             var mname =
                 Driver.Instance.FindElement(
-                    By.XPath(
-                        "/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[2]/fg-input/div/input"));
+                    By.XPath("//input[@placeholder='Middle name']"));
             mname.SendKeys(_mname);
 
+            var findRegion = Driver.Instance.FindElement(By.XPath("/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[3]/fg-select[1]/div/select"));
+            findRegion.Click();
             var region =
                 Driver.Instance.FindElement(
-                    By.XPath(
-                        "/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[3]/fg-select[1]/div/select/option[4]"));
+                    By.XPath("//option[@label='Vynnitska']"));
             region.Click();
 
             var fst =
                 Driver.Instance.FindElement(
-                    By.XPath(
-                        "/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[4]/fg-select[1]/div/select/option[2]"));
+                    By.XPath("//option[@label='Dinamo']"));
             fst.Click();
 
-            var fs =
+            var style =
                 Driver.Instance.FindElement(
-                    By.XPath(
-                        "/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[6]/fg-select[1]/div/select/option[2]"));
-            fs.Click();
+                    By.XPath("//option[@label='FS']"));
+            style.Click();
 
             var age =
                 Driver.Instance.FindElement(
-                    By.XPath(
-                        "/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[6]/fg-select[2]/div/select/option[4]"));
+                    By.XPath("//option[@label='Cadet']"));
             age.Click();
 
             var year =
                 Driver.Instance.FindElement(
-                    By.XPath(
-                        "/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[7]/fg-select/div/select/option[2]"));
+                    By.XPath("//option[@label='2017']"));
             year.Click();
 
             Thread.Sleep(2000);
 
             var greenButton =
                 Driver.Instance.FindElement(
-                    By.XPath("/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[1]/div[1]/button"));
+                    By.XPath("//ico[@icon='glyphicon-ok']"));
             greenButton.Click();
 
             Thread.Sleep(5000);

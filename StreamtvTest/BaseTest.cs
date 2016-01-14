@@ -11,7 +11,9 @@ namespace StreamtvTest
         {
             Driver.Initialize();
             LoginPage.Goto();
-            LoginPage.LoginAs("auto").WithPassword("test").Login();
+            LoginPage.EnterLogin("auto")
+                .EnterPassword("test")
+                .Login();
         }
 
         [TestCleanup]

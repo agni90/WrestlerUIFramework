@@ -94,7 +94,7 @@ namespace StreamtvFramework
         public void Search()
         {
             var search = Driver.Instance.FindElement(
-                By.XPath("/html/body/div/div/div/div/div/div/div/div/div/div[1]/div/form/div[1]/input"));
+                By.XPath("//input[@ng-model='searchFor']"));
             search.SendKeys(_lname);
             search.SendKeys(Keys.Enter);
         }

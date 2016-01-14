@@ -17,9 +17,17 @@ namespace StreamtvTest
             OnlyCreatedProfilePage.Goto();
 
             //fills all fields
-            OnlyCreatedProfilePage.CreateWithLastName("Siiidenko").WithFirstName("Alexander").WithDOB("12-12-1998")
-                .WithMiddleName("Olegoeich").WithRegion("Volynska").WithFST("Dinamo")
-                .WithStyle("FS").WithAge("Senior").WithYear("2017").Create();
+            OnlyCreatedProfilePage
+                .EnterLastName("Siiidenko")
+                .EnterFirstName("Alexander")
+                .EnterDOB("12-12-1998")
+                .EnterMiddleName("Olegoeich")
+                .ChooseRegion("Volynska")
+                .ChooseFST("Dinamo")
+                .ChooseStyle("FS")
+                .ChooseAge("Senior")
+                .ChooseYear("2017")
+                .Create();
 
             Assert.IsTrue(ProfilePage.IsAt, "Profile was not created. Please, try again");
         }
@@ -30,9 +38,9 @@ namespace StreamtvTest
         {
             OnlyCreatedProfilePage.Goto();
 
-            OnlyCreatedProfilePage.CreateWithLastName("").WithFirstName("").WithDOB("")
-                .WithMiddleName("").WithRegion("").WithFST("")
-                .WithStyle("").WithAge("").WithYear("").Create();
+            OnlyCreatedProfilePage.EnterLastName("").EnterFirstName("").EnterDOB("")
+                .EnterMiddleName("").ChooseRegion("").ChooseFST("")
+                .ChooseStyle("").ChooseAge("").ChooseYear("").Create();
 
             Assert.Fail();
         }
@@ -43,9 +51,9 @@ namespace StreamtvTest
         {
             OnlyCreatedProfilePage.Goto();
 
-            OnlyCreatedProfilePage.CreateWithLastName("").WithFirstName("Alexander").WithDOB("12-12-1998")
-                .WithMiddleName("Olegoeich").WithRegion("Volynska").WithFST("Dinamo")
-                .WithStyle("FS").WithAge("Senior").WithYear("2017").Create();
+            OnlyCreatedProfilePage.EnterLastName("").EnterFirstName("Alexander").EnterDOB("12-12-1998")
+                .EnterMiddleName("Olegoeich").ChooseRegion("Volynska").ChooseFST("Dinamo")
+                .ChooseStyle("FS").ChooseAge("Senior").ChooseYear("2017").Create();
 
             Assert.Fail();
         }
