@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StreamtvFramework;
 using OpenQA.Selenium;
 

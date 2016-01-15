@@ -13,16 +13,15 @@ namespace StreamtvFramework
 
         public static void ChoosePerson()
         {
-            Driver.Instance.FindElement(
-                By.XPath("/html/body/div/div/div/div/div/div/div/div/div/div[3]/div[2]/table/tbody/tr/td[2]"))
+            Driver.Instance.FindElements(
+                By.XPath("//td[@class='ng-binding']"))[1]//click to first name in table
                 .Click();
-            Thread.Sleep(2000);
         }
 
         public static void SecondSearch()
         {
             Driver.Instance.FindElement(
-                By.XPath("/html/body/div/div/div/div/div/div/div/div/div/div[1]/div/form/div[1]/button[1]"))
+                By.XPath("//button[@type='submit']"))//click on search button
                 .Click();
         }
 
@@ -32,7 +31,7 @@ namespace StreamtvFramework
             {
                 var fio =
                     Driver.Instance.FindElement(
-                        By.XPath("/html/body/div/div/div/div/div/div/div/div/div/div[3]/div[2]/table"));
+                        By.XPath("//table[@class='table table-striped table-hover']"));//empty table
                 return fio.Text == "Siiidenko Alexander Olegoeich";
             }
         }
@@ -52,8 +51,8 @@ namespace StreamtvFramework
             get
             {
                 var fio =
-                    Driver.Instance.FindElement(
-                        By.XPath("/html/body/div/div/div/div/div/div/div/div/div/div[3]/div[2]/table/tbody/tr/td[2]"));
+                    Driver.Instance.FindElements(
+                        By.XPath("//td[@class='ng-binding']"))[1];
                 return fio.Text == "Siiidenko Alexander Olegoeich";
             }
         }
@@ -64,7 +63,7 @@ namespace StreamtvFramework
             {
                 var emptyTable =
                     Driver.Instance.FindElement(
-                        By.XPath("/html/body/div/div/div/div/div/div/div/div/div/div[3]/div[2]/table"));
+                        By.XPath("//table[@class='table table-striped table-hover']"));
                 return emptyTable.Text == String.Empty;
             }
         }

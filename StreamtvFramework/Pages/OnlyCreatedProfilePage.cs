@@ -21,11 +21,11 @@ namespace StreamtvFramework
         public static void Delete()
         {
             Driver.Instance.FindElement(
-                By.XPath("/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[1]/div[2]"))
+                By.XPath("//button[@ng-disabled='wr.new']"))//red button was clicked
                 .Click();
-            Thread.Sleep(2000);
+            //Thread.Sleep(2000);
             Driver.Instance.FindElement(
-                By.XPath("/html/body/div[3]/div/div/div[3]/button[1]"))
+                By.XPath("//button[@class='btn btn-success']"))//dijsno pidverdutu pop up
                 .Click();
         }
     }
