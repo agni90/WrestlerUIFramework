@@ -41,8 +41,8 @@ namespace StreamtvFramework
             get
             {
                 var photoLabel =
-                    Driver.Instance.FindElement(
-                        By.XPath("/html/body/div/div/div/div/div/div/div[1]/div/div/div[3]/div[2]/table/tbody/tr/td[6]"));
+                    Driver.Instance.FindElements(
+                        By.XPath("//td[@class='ng-binding']"))[5];//tab photo in user's card
                 return photoLabel.Text == "Yes";
             }
         }
@@ -71,7 +71,7 @@ namespace StreamtvFramework
         public static void Goto()
         {
             Driver.Instance.FindElement(
-                By.XPath("/html/body/div/div/div/div/div/ul/li[1]/a/tab-heading/div")).Click();
+                By.XPath("//div[@class='tab-heading']")).Click();//go to wrestlers tab
         }
     }
 
