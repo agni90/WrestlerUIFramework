@@ -8,8 +8,8 @@ namespace StreamtvFramework
     {
         public static void Goto()
         {
-            Driver.Instance.FindElement(
-                By.XPath("/html/body/div/div/div/div/div/div/div/div/div/div[1]/div/form/div[1]/button[2]"))
+            Driver.Instance.FindElements(
+                By.XPath("//button[@class='btn btn-default']"))[0]
                 .Click();
         }
 
@@ -95,7 +95,6 @@ namespace StreamtvFramework
             return this;            
         }
 
-
         public void Create()
         {
             var lname =
@@ -118,12 +117,12 @@ namespace StreamtvFramework
                     By.XPath("//input[@placeholder='Middle name']"));
             mname.SendKeys(_mname);
 
-            var findRegion = Driver.Instance.FindElement(By.XPath("/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[3]/fg-select[1]/div/select"));
-            findRegion.Click();
-            var region =
+            var dropDownRegions =
                 Driver.Instance.FindElement(
-                    By.XPath("//option[@label='Vynnitska']"));
-            region.Click();
+                    By.XPath("//fg-select[@value='wr.region1']/descendant::select"));
+            Thread.Sleep(1000);
+            var region1 = dropDownRegions.FindElements(By.XPath("//option[@label='Kyiv']"))[0];
+            region1.Click();
 
             var fst =
                 Driver.Instance.FindElement(

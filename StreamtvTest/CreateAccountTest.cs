@@ -36,9 +36,17 @@ namespace StreamtvTest
         {
             OnlyCreatedProfilePage.Goto();
 
-            OnlyCreatedProfilePage.EnterLastName("").EnterFirstName("").EnterDOB("")
-                .EnterMiddleName("").ChooseRegion("").ChooseFST("")
-                .ChooseStyle("").ChooseAge("").ChooseYear("").Create();
+            OnlyCreatedProfilePage
+                .EnterLastName("")
+                .EnterFirstName("")
+                .EnterDOB("")
+                .EnterMiddleName("")
+                .ChooseRegion("")
+                .ChooseFST("")
+                .ChooseStyle("")
+                .ChooseAge("")
+                .ChooseYear("")
+                .Create();
 
             Assert.Fail();
         }
@@ -49,9 +57,17 @@ namespace StreamtvTest
         {
             OnlyCreatedProfilePage.Goto();
 
-            OnlyCreatedProfilePage.EnterLastName("").EnterFirstName("Alexander").EnterDOB("12-12-1998")
-                .EnterMiddleName("Olegoeich").ChooseRegion("Volynska").ChooseFST("Dinamo")
-                .ChooseStyle("FS").ChooseAge("Senior").ChooseYear("2017").Create();
+            OnlyCreatedProfilePage
+                .EnterLastName("")
+                .EnterFirstName("Alexander")
+                .EnterDOB("12-12-1998")
+                .EnterMiddleName("Olegoeich")
+                .ChooseRegion("Volynska")
+                .ChooseFST("Dinamo")
+                .ChooseStyle("FS")
+                .ChooseAge("Senior")
+                .ChooseYear("2017")
+                .Create();
 
             Assert.Fail();
         }
