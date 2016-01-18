@@ -10,9 +10,11 @@ namespace StreamtvTest
         [TestMethod]
         public void Can_Delete_Account()
         {
-            PersonsListPage.SearchPerson("Siiidenko Alexander").Search();
-            PersonsListPage.ChoosePerson();
-            OnlyCreatedProfilePage.Delete();
+            PersonsListPage
+                .EnterLastAndFirstNames("Siiidenko Alexander")
+                .Search();
+            PersonsListPage.ChoosePersonFromSearchList();
+            OnlyCreatedProfilePage.DeleteUser();
             PersonsListPage.SecondSearch();
 
             Assert.IsFalse(PersonsListPage.IsAtInEmptyTable, "Your account was not deleted");

@@ -18,7 +18,7 @@ namespace StreamtvFramework
             return new CreateCommand(lname);
         }
 
-        public static void Delete()
+        public static void DeleteUser()
         {
             Driver.Instance.FindElement(
                 By.XPath("//button[@ng-disabled='wr.new']"))//red button was clicked

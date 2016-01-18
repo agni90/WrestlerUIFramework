@@ -10,10 +10,12 @@ namespace StreamtvTest
         [TestMethod]
         public void Can_Update_Account()
         {
-            PersonsListPage.SearchPerson("Sidenko Alexander").Search();
-            PersonsListPage.ChoosePerson();
+            PersonsListPage
+                .EnterLastAndFirstNames("Sidenko Alexander")
+                .Search();
+            PersonsListPage.ChoosePersonFromSearchList();
             ProfilePage.DownloadPhoto();
-            PersonsListPage.Goto();
+            PersonsListPage.GotoWreslerTab();
             PersonsListPage.SecondSearch();
 
             Assert.IsTrue(PersonsListPage.DoesPhotoLabelChanged, "Photo was not downloaded. Please, try again");

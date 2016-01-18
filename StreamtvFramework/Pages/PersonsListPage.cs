@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Threading;
 using OpenQA.Selenium;
 
 namespace StreamtvFramework
 {
     public class PersonsListPage
     {
-        public static SearchPersonCommand SearchPerson(string lname)
+        public static SearchPersonCommand EnterLastAndFirstNames(string lname)
         {
             return new SearchPersonCommand(lname);
         }
 
-        public static void ChoosePerson()
+        public static void ChoosePersonFromSearchList()
         {
             Driver.Instance.FindElements(
                 By.XPath("//td[@class='ng-binding']"))[1]//click to first name in table
@@ -68,7 +67,7 @@ namespace StreamtvFramework
             }
         }
 
-        public static void Goto()
+        public static void GotoWreslerTab()
         {
             Driver.Instance.FindElement(
                 By.XPath("//div[@class='tab-heading']")).Click();//go to wrestlers tab
