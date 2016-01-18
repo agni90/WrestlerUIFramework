@@ -1,6 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
 
 namespace StreamtvFramework
 {
@@ -16,7 +17,7 @@ namespace StreamtvFramework
                 .ImplicitlyWait(TimeSpan.FromSeconds(5));
             }
 
-            public static void CleanUp()
+       public static void CleanUp()
             {
                 Instance.Close();
             }

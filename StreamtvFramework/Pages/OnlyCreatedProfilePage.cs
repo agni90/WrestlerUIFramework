@@ -1,6 +1,8 @@
-﻿using System.Runtime.Remoting.Messaging;
+﻿using System;
+using System.Runtime.Remoting.Messaging;
 using System.Threading;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace StreamtvFramework
 {
@@ -117,40 +119,39 @@ namespace StreamtvFramework
                     By.XPath("//input[@placeholder='Middle name']"));
             mname.SendKeys(_mname);
 
-            var dropDownRegions =
-                Driver.Instance.FindElement(
-                    By.XPath("//fg-select[@value='wr.region1']/descendant::select"));
-            Thread.Sleep(1000);
-            var region1 = dropDownRegions.FindElements(By.XPath("//option[@label='Kyiv']"))[0];
-            region1.Click();
+            var region = Driver.Instance
+                .FindElement(
+                    By.XPath(
+                        "/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[3]/fg-select[1]/div/select/option[4]"));
+           region.Click();
 
             var fst =
                 Driver.Instance.FindElement(
-                    By.XPath("//option[@label='Dinamo']"));
+                    By.XPath("/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[4]/fg-select[1]/div/select/option[4]"));
             fst.Click();
 
             var style =
                 Driver.Instance.FindElement(
-                    By.XPath("//option[@label='FS']"));
+                    By.XPath("/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[6]/fg-select[1]/div/select/option[3]"));
             style.Click();
 
             var age =
                 Driver.Instance.FindElement(
-                    By.XPath("//option[@label='Cadet']"));
+                    By.XPath("/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[6]/fg-select[2]/div/select/option[2]"));
             age.Click();
 
             var year =
                 Driver.Instance.FindElement(
-                    By.XPath("//option[@label='2017']"));
+                    By.XPath("/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[7]/fg-select/div/select/option[4]"));
             year.Click();
 
-            Thread.Sleep(2000);
+            var sleep = new WebDriverWait(Driver.Instance, TimeSpan.FromSeconds(2));
+            sleep.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@ng-disabled='fWrestler.$invalid||fWrestler.$pristine']")));
 
             var greenButton =
                 Driver.Instance.FindElement(
-                    By.XPath("//ico[@icon='glyphicon-ok']"));
+                    By.XPath("//button[@ng-disabled='fWrestler.$invalid||fWrestler.$pristine']"));
             greenButton.Click();
-
             Thread.Sleep(5000);
 
         }
