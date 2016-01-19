@@ -10,8 +10,13 @@ namespace StreamtvTest
 		[TestMethod]
 		public void Can_Search_User()
 		{
+            #region TestData
+
+            const string firstAndLastNames = "Sidenko Alexander";
+
+            #endregion
             PersonsListPage
-                .EnterLastAndFirstNames("Siiidenko Alexander")
+                .EnterLastAndFirstNames(firstAndLastNames)
                 .Search();
 
             Assert.IsTrue(PersonsListPage.IsAt, "Your person was not found");
@@ -20,8 +25,13 @@ namespace StreamtvTest
         [TestMethod]
         public void Cannot_Search_Nonexistent_User()
         {
+            #region TestData
+
+            const string firstAndLastNames = "Ssdhcahcfo Trtr";
+
+            #endregion
             PersonsListPage
-                .EnterLastAndFirstNames("Ssdhcahcfo trtr")
+                .EnterLastAndFirstNames(firstAndLastNames)
                 .Search();
 
             Assert.IsTrue(PersonsListPage.IsAtOnEmptyTable, "Your person was not found");

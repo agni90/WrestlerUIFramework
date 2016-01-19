@@ -10,8 +10,14 @@ namespace StreamtvTest
         [TestMethod]
         public void Can_Delete_Account()
         {
+            #region TestData
+
+            const string firstAndLastNames = "Siiidenko Alexander";
+
+            #endregion
+
             PersonsListPage
-                .EnterLastAndFirstNames("Siiidenko Alexander")
+                .EnterLastAndFirstNames(firstAndLastNames)
                 .Search();
             PersonsListPage.ChoosePersonFromSearchList();
             OnlyCreatedProfilePage.DeleteUser();

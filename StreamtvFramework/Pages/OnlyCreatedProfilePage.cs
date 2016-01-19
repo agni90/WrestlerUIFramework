@@ -121,8 +121,7 @@ namespace StreamtvFramework
 
             var region = Driver.Instance
                 .FindElement(
-                    By.XPath(
-                        "/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[3]/fg-select[1]/div/select/option[4]"));
+                    By.XPath("/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[3]/fg-select[1]/div/select/option[4]"));
            region.Click();
 
             var fst =

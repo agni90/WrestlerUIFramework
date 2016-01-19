@@ -10,8 +10,14 @@ namespace StreamtvTest
         [TestMethod]
         public void Can_Update_Account()
         {
+            #region TestData
+
+            const string firstAndLastNames = "Sidenko Alexander";
+            
+            #endregion
+
             PersonsListPage
-                .EnterLastAndFirstNames("Sidenko Alexander")
+                .EnterLastAndFirstNames(firstAndLastNames)
                 .Search();
             PersonsListPage.ChoosePersonFromSearchList();
             ProfilePage.DownloadPhoto();

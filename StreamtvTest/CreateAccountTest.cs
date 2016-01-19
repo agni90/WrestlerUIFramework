@@ -11,20 +11,33 @@ namespace StreamtvTest
         [TestMethod]
         public void Can_Create_Account_With_Valid_Data()
         {
+            #region TestData
+
+            const string lname = "Siiidenko";
+            const string fname = "Alexander";
+            const string dob = "12-12-1998";
+            const string mname = "Olegoeich";
+            const string region = "Volynska";
+            const string fst = "Dinamo";
+            const string style = "FS";
+            const string age = "Senior";
+            const string year = "2017"; 
+
+            #endregion
             //press New button
             OnlyCreatedProfilePage.Goto();
 
             //fills all fields
             OnlyCreatedProfilePage
-                .EnterLastName("Siiidenko")
-                .EnterFirstName("Alexander")
-                .EnterDOB("12-12-1998")
-                .EnterMiddleName("Olegoeich")
-                .ChooseRegion("Volynska")
-                .ChooseFST("Dinamo")
-                .ChooseStyle("FS")
-                .ChooseAge("Senior")
-                .ChooseYear("2017")
+                .EnterLastName(lname)
+                .EnterFirstName(fname)
+                .EnterDOB(dob)
+                .EnterMiddleName(mname)
+                .ChooseRegion(region)
+                .ChooseFST(fst)
+                .ChooseStyle(style)
+                .ChooseAge(age)
+                .ChooseYear(year)
                 .Create();
 
             Assert.IsTrue(ProfilePage.IsAt, "Profile was not created. Please, try again");
@@ -34,19 +47,33 @@ namespace StreamtvTest
         [ExpectedException(typeof(WebDriverException))]
         public void Cannot_Create_Account_When_Fields_Are_Empty()
         {
+            #region TestData
+
+            const string lname = "";
+            const string fname = "";
+            const string dob = "";
+            const string mname = "";
+            const string region = "Volynska";
+            const string fst = "Dinamo";
+            const string style = "FS";
+            const string age = "Senior";
+            const string year = "2017";
+
+            #endregion
             OnlyCreatedProfilePage.Goto();
 
             OnlyCreatedProfilePage
-                .EnterLastName("")
-                .EnterFirstName("")
-                .EnterDOB("")
-                .EnterMiddleName("")
-                .ChooseRegion("")
-                .ChooseFST("")
-                .ChooseStyle("")
-                .ChooseAge("")
-                .ChooseYear("")
+                .EnterLastName(lname)
+                .EnterFirstName(fname)
+                .EnterDOB(dob)
+                .EnterMiddleName(mname)
+                .ChooseRegion(region)
+                .ChooseFST(fst)
+                .ChooseStyle(style)
+                .ChooseAge(age)
+                .ChooseYear(year)
                 .Create();
+
 
             Assert.Fail();
         }
@@ -55,18 +82,31 @@ namespace StreamtvTest
         [ExpectedException(typeof(WebDriverException))]
         public void Cannot_Create_Account_When_One_Field_Is_Empty()
         {
+            #region TestData
+
+            const string lname = "";
+            const string fname = "Alexander";
+            const string dob = "12-12-1998";
+            const string mname = "Olegoeich";
+            const string region = "Volynska";
+            const string fst = "Dinamo";
+            const string style = "FS";
+            const string age = "Senior";
+            const string year = "2017";
+
+            #endregion
             OnlyCreatedProfilePage.Goto();
 
             OnlyCreatedProfilePage
-                .EnterLastName("")
-                .EnterFirstName("Alexander")
-                .EnterDOB("12-12-1998")
-                .EnterMiddleName("Olegoeich")
-                .ChooseRegion("Volynska")
-                .ChooseFST("Dinamo")
-                .ChooseStyle("FS")
-                .ChooseAge("Senior")
-                .ChooseYear("2017")
+                .EnterLastName(lname)
+                .EnterFirstName(fname)
+                .EnterDOB(dob)
+                .EnterMiddleName(mname)
+                .ChooseRegion(region)
+                .ChooseFST(fst)
+                .ChooseStyle(style)
+                .ChooseAge(age)
+                .ChooseYear(year)
                 .Create();
 
             Assert.Fail();
