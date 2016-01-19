@@ -74,7 +74,6 @@ namespace StreamtvTest
                 .ChooseYear(year)
                 .Create();
 
-
             Assert.Fail();
         }
 

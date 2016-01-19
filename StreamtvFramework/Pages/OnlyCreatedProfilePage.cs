@@ -44,6 +44,9 @@ namespace StreamtvFramework
         private string _age;
         private string _year;
 
+        readonly string _greenButtonXPath = "//button[@ng-disabled='fWrestler.$invalid||fWrestler.$pristine']";
+        readonly string _wrestlerTitle = "/html/body/div/div/div/div/div/ul/li[2]/a/tab-heading/div";
+
         public CreateCommand(string lname)
         {
             _lname = lname;
@@ -144,15 +147,15 @@ namespace StreamtvFramework
                     By.XPath("/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[2]/div/div[2]/div[7]/fg-select/div/select/option[4]"));
             year.Click();
 
-            var sleep = new WebDriverWait(Driver.Instance, TimeSpan.FromSeconds(2));
-            sleep.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@ng-disabled='fWrestler.$invalid||fWrestler.$pristine']")));
-
+            //var sleep = new WebDriverWait(Driver.Instance, TimeSpan.FromSeconds(2));
+            //sleep.Until(ExpectedConditions.ElementIsVisible(By.XPath(_greenButtonXPath)));
+            Driver.WaitElementUntilItVisible(_greenButtonXPath, 5);
             var greenButton =
                 Driver.Instance.FindElement(
-                    By.XPath("//button[@ng-disabled='fWrestler.$invalid||fWrestler.$pristine']"));
+                    By.XPath(_greenButtonXPath));
             greenButton.Click();
-            Thread.Sleep(5000);
 
+            Driver.WaitElementUntilTextChanged(_wrestlerTitle, 5);
         }
     }
 

@@ -52,8 +52,8 @@
   <ItemGroup>
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Pages\OnlyCreatedProfilePage.cs" />
-    <Compile Include="Helpers\Driver.cs" />
-    <Compile Include="Helpers\LoginPage.cs" />
+    <Compile Include="Driver.cs" />
+    <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\PersonsListPage.cs" />
     <Compile Include="Pages\ProfilePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
