@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StreamtvFramework;
 using OpenQA.Selenium;
-
+using StreamtvFramework.Commands;
 
 namespace StreamtvTest
 {
@@ -11,104 +11,60 @@ namespace StreamtvTest
         [TestMethod]
         public void Can_Create_Account_With_Valid_Data()
         {
-            #region TestData
+            var testWrestler = new Wrestler
+            {
+                lname = "Siredenko",
+                fname = "Alexander",
+                dob = "12-12-1998",
+                mname = "Olegoeich",
+            };
 
-            const string lname = "Siiidenko";
-            const string fname = "Alexander";
-            const string dob = "12-12-1998";
-            const string mname = "Olegoeich";
-            const string region = "Volynska";
-            const string fst = "Dinamo";
-            const string style = "FS";
-            const string age = "Senior";
-            const string year = "2017"; 
+            //NewWrestlerPage.ClickNewUserButton();
+            var page = new NewWrestlerPage();
+            page.ClickNewUserButton();
+            page.FillFields(testWrestler);
+            page.SubmitNewWrestlerAccount();
+            page.WaitForWrestlerTitleChanged();
 
-            #endregion
-            //press New button
-            OnlyCreatedProfilePage.Goto();
+            var profilePage = new ProfilePage();
 
-            //fills all fields
-            OnlyCreatedProfilePage
-                .EnterLastName(lname)
-                .EnterFirstName(fname)
-                .EnterDOB(dob)
-                .EnterMiddleName(mname)
-                .ChooseRegion(region)
-                .ChooseFST(fst)
-                .ChooseStyle(style)
-                .ChooseAge(age)
-                .ChooseYear(year)
-                .Create();
-
-            Assert.IsTrue(ProfilePage.IsAt, "Profile was not created. Please, try again");
+            Assert.AreEqual(profilePage.wrestlerTitleElement.Text, "Siredenko A.O.");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(WebDriverException))]
         public void Cannot_Create_Account_When_Fields_Are_Empty()
         {
-            #region TestData
+            var testWrestler = new Wrestler
+            {
+                lname = "",
+                fname = "",
+                dob = "",
+                mname = "",
+            };
 
-            const string lname = "";
-            const string fname = "";
-            const string dob = "";
-            const string mname = "";
-            const string region = "Volynska";
-            const string fst = "Dinamo";
-            const string style = "FS";
-            const string age = "Senior";
-            const string year = "2017";
-
-            #endregion
-            OnlyCreatedProfilePage.Goto();
-
-            OnlyCreatedProfilePage
-                .EnterLastName(lname)
-                .EnterFirstName(fname)
-                .EnterDOB(dob)
-                .EnterMiddleName(mname)
-                .ChooseRegion(region)
-                .ChooseFST(fst)
-                .ChooseStyle(style)
-                .ChooseAge(age)
-                .ChooseYear(year)
-                .Create();
-
-            Assert.Fail();
+            //NewWrestlerPage.ClickNewUserButton();
+            var page = new NewWrestlerPage();
+            page.ClickNewUserButton();
+            page.FillFields(testWrestler);
+            Assert.IsTrue(page.greenButtonElement.Enabled == false);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(WebDriverException))]
         public void Cannot_Create_Account_When_One_Field_Is_Empty()
         {
-            #region TestData
+            var testWrestler = new Wrestler
+            {
+                lname = "",
+                fname = "Alexander",
+                dob = "12-12-1998",
+                mname = "Olegoeich",
+            };
 
-            const string lname = "";
-            const string fname = "Alexander";
-            const string dob = "12-12-1998";
-            const string mname = "Olegoeich";
-            const string region = "Volynska";
-            const string fst = "Dinamo";
-            const string style = "FS";
-            const string age = "Senior";
-            const string year = "2017";
-
-            #endregion
-            OnlyCreatedProfilePage.Goto();
-
-            OnlyCreatedProfilePage
-                .EnterLastName(lname)
-                .EnterFirstName(fname)
-                .EnterDOB(dob)
-                .EnterMiddleName(mname)
-                .ChooseRegion(region)
-                .ChooseFST(fst)
-                .ChooseStyle(style)
-                .ChooseAge(age)
-                .ChooseYear(year)
-                .Create();
-
-            Assert.Fail();
+            //NewWrestlerPage.ClickNewUserButton();
+            var page = new NewWrestlerPage();
+            page.ClickNewUserButton();
+            page.FillFields(testWrestler);
+            Assert.IsTrue(page.greenButtonElement.Enabled == false);
+            }
         }
-    }
 }

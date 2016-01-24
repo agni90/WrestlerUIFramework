@@ -1,40 +1,53 @@
 ﻿using System.Windows.Forms;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.PageObjects;
 
 namespace StreamtvFramework
 {
     public class ProfilePage
     {
-        public static bool IsAt
+        const string _wrestlerTitleXpath = "/html/body/div/div/div/div/div/ul/li[2]/a/tab-heading/div";
+        const string _deleteUserButtonXpath = "//button[@ng-disabled='wr.new']";
+        const string _popupXpath = "//button[@class='btn btn-success']";
+        const string _photoUploaderXpath = "//input[@uploader='photoUploader']";
+
+        [FindsBy(How = How.XPath, Using = _wrestlerTitleXpath)]
+        public IWebElement wrestlerTitleElement { get; set; }
+
+        [FindsBy(How = How.XPath, Using = _deleteUserButtonXpath)]
+        public IWebElement deleteUserButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = _popupXpath)]
+        public IWebElement popupConfirmation { get; set; }
+
+        [FindsBy(How = How.XPath, Using = _photoUploaderXpath)]
+        public IWebElement uploadPhotoButton { get; set; }
+
+        public ProfilePage()
         {
-            get
-            {
-                var identifier = Driver.Instance.FindElements(By.XPath("//tab-heading[@class='ng-scope']"))[1];
-                return identifier.Text == "Siiidenko A.O.";
-            }
+            PageFactory.InitElements(Driver.Instance, this);
         }
 
-        //public static bool ClickButton
-        //{
-        //    get
-        //    {
-        //        var button =
-        //            Driver.Instance.FindElement(
-        //                By.XPath("/html/body/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div[1]/div[1]"));
-        //        if (button.Enabled) { return true;}
-        //        else { throw new WebDriverException("Unexpected error");}
-        //    }
-        //}
-
-        public static void DownloadPhoto()
+        public void DeleteWrestler()
         {
-            Driver.Instance.FindElement(
-                By.XPath("//input[@uploader='photoUploader']"))//browse
-                .Click();
+            deleteUserButton.Click();
+        }
 
-            SendKeys.SendWait(@"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg");
+        public void ConfirmDeleteUser()
+        {
+            popupConfirmation.Click();
+        }
+
+        public void ClickUploadPhotoButton()
+        {
+            uploadPhotoButton.Click();
+        }
+
+        public void ChoosePhotoFromPC()
+        {
+            SendKeys.SendWait(@"C:\Users\Inga\Desktop\ZuwvhdFGb8k.jpg");
             SendKeys.SendWait(@"{Enter}");
-
         }
+
     }
 }

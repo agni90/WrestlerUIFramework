@@ -11,30 +11,28 @@ namespace StreamtvTest
 		public void Can_Search_User()
 		{
             #region TestData
-
             const string firstAndLastNames = "Sidenko Alexander";
-
             #endregion
-            PersonsListPage
-                .EnterLastAndFirstNames(firstAndLastNames)
-                .Search();
 
-            Assert.IsTrue(PersonsListPage.IsAt, "Your person was not found");
+            var searchPage = new SearchResultPage();
+            searchPage.FillSearchField(firstAndLastNames);
+            searchPage.SearchSubmit();
+
+            Assert.AreEqual(SearchResultPage.FirstLine, "Sidenko Alexander Olegoeich");
         }
 
         [TestMethod]
         public void Cannot_Search_Nonexistent_User()
         {
             #region TestData
-
             const string firstAndLastNames = "Ssdhcahcfo Trtr";
-
             #endregion
-            PersonsListPage
-                .EnterLastAndFirstNames(firstAndLastNames)
-                .Search();
 
-            Assert.IsTrue(PersonsListPage.IsAtOnEmptyTable, "Your person was not found");
+            var searchPage = new SearchResultPage();
+            searchPage.FillSearchField(firstAndLastNames);
+            searchPage.SearchSubmit();
+
+            Assert.AreEqual(SearchResultPage.IsAtOnEmptyTable, "");
         }
     }
 }

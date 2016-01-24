@@ -11,19 +11,20 @@ namespace StreamtvTest
         public void Can_Delete_Account()
         {
             #region TestData
-
             const string firstAndLastNames = "Siiidenko Alexander";
-
             #endregion
 
-            PersonsListPage
-                .EnterLastAndFirstNames(firstAndLastNames)
-                .Search();
-            PersonsListPage.ChoosePersonFromSearchList();
-            OnlyCreatedProfilePage.DeleteUser();
-            PersonsListPage.SecondSearch();
+            var searchPage = new SearchResultPage();
+            var profilePage = new ProfilePage();
 
-            Assert.IsFalse(PersonsListPage.IsAtInEmptyTable, "Your account was not deleted");
+            searchPage.FillSearchField(firstAndLastNames);
+            searchPage.SearchSubmit();
+            searchPage.ChoosePersonFromSearchList();
+            profilePage.DeleteWrestler();
+            profilePage.ConfirmDeleteUser();
+            searchPage.SecondSearch();
+
+            Assert.IsFalse(SearchResultPage.IsAtInEmptyTable, "Your account was not deleted");
         }
     }
 }

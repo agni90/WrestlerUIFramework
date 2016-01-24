@@ -50,13 +50,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CreateProfilePageCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
-    <Compile Include="Pages\OnlyCreatedProfilePage.cs" />
+    <Compile Include="Pages\NewWrestlerPage.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="Pages\LoginPage.cs" />
-    <Compile Include="Pages\PersonsListPage.cs" />
+    <Compile Include="Pages\SearchResultPage.cs" />
     <Compile Include="Pages\ProfilePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wrestler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
