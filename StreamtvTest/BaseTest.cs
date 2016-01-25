@@ -10,10 +10,11 @@ namespace StreamtvTest
         public void Init()
         {
             Driver.Initialize();
-            LoginPage.Goto();
-            LoginPage.EnterLogin("auto")
-                .EnterPassword("test")
-                .Login();
+            var loginPage = new LoginPage();
+            loginPage.GotoLoginPage();
+            loginPage.EnterLogin("auto");
+            loginPage.EnterPassword("test");
+            loginPage.SubmitWrestlerCreation();
         }
 
         [TestCleanup]

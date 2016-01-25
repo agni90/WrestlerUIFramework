@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StreamtvFramework;
 using OpenQA.Selenium;
-using StreamtvFramework.Commands;
 
 namespace StreamtvTest
 {
@@ -18,8 +17,6 @@ namespace StreamtvTest
                 dob = "12-12-1998",
                 mname = "Olegoeich",
             };
-
-            //NewWrestlerPage.ClickNewUserButton();
             var page = new NewWrestlerPage();
             page.ClickNewUserButton();
             page.FillFields(testWrestler);
@@ -41,8 +38,6 @@ namespace StreamtvTest
                 dob = "",
                 mname = "",
             };
-
-            //NewWrestlerPage.ClickNewUserButton();
             var page = new NewWrestlerPage();
             page.ClickNewUserButton();
             page.FillFields(testWrestler);
@@ -59,8 +54,6 @@ namespace StreamtvTest
                 dob = "12-12-1998",
                 mname = "Olegoeich",
             };
-
-            //NewWrestlerPage.ClickNewUserButton();
             var page = new NewWrestlerPage();
             page.ClickNewUserButton();
             page.FillFields(testWrestler);

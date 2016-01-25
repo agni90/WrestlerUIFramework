@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using StreamtvFramework.Commands;
+
 
 namespace StreamtvFramework
 {
@@ -84,11 +84,6 @@ namespace StreamtvFramework
         public void ClickNewUserButton()
         {
             newUserButton.Click();
-            //Driver.Instance.FindElements(
-            //    By.XPath("//button[@class='btn btn-default']"))[0]
-            //    .Click();
-
-            //"//button[@class='btn btn-default']//ico[@icon='glyphicon-plus']"
         }
 
     }

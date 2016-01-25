@@ -50,8 +50,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\CreateProfilePageCommand.cs" />
-    <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Pages\NewWrestlerPage.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="Pages\LoginPage.cs" />

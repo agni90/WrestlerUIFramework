@@ -73,7 +73,7 @@ namespace StreamtvFramework
             {
                 var fio =
                     Driver.Instance.FindElement(
-                        By.XPath("//table[@class='table table-striped table-hover']"));//empty table
+                        By.XPath("//table[@class='table table-striped table-hover']"));
                 return fio.Text == "Siiidenko Alexander Olegoeich";
             }
         }
